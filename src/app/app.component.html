@@ -23,9 +23,10 @@
           <td>{{ pair.daysWorked }}</td>
         </tr>
         <tr>
-          <td class="text-center" colspan="3">The two employees (<strong>Employee {{ (bestTeam$ | async)?.firstEmployeeId }}</strong> and
-            <strong>Employee {{ (bestTeam$ | async)?.secondEmployeeId }})</strong>worked together for the longest time ----></td>
+          <td class="text-center" colspan="3">The two colleagues (<strong>Employee {{ (bestTeam$ | async)?.firstEmployeeId }}</strong> and
+            <strong>Employee {{ (bestTeam$ | async)?.secondEmployeeId }})</strong>have worked for the longest period ----></td>
           <td class="result">Total: <strong>{{ (bestTeam$ | async)?.daysWorked }}</strong></td>
+           
         </tr>
       </tbody>
     </table>
