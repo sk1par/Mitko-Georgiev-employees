@@ -59,11 +59,9 @@ export class StaffService {
       }
     }
 
-    // Sort the list with calculated work days for all employee team pairs in descending direction
+    // Sort the list
     this.accumulatedTeams.sort((p1, p2) => p2.daysWorked - p1.daysWorked);
-    // The best pair is on top now
     this.bestTeamSubject.next(this.accumulatedTeams[0]);
-    // Filter project records that match the best pair --> displayed in the table
     const teamProjects = this.teamProjects.filter(p => this.isTheSamePair(p, this.bestTeamSubject.value));
     this.teamProjectsToShowSubject.next(teamProjects);
 
@@ -81,8 +79,8 @@ export class StaffService {
     this.teamProjects.push(teamProject);
 
     const existingTeam = this.accumulatedTeams.find(p => this.hasExistingPair(p, firstLog, secondLog));
+    // This pair of employees already exists in the list --> only add the overlappying days  
     if (existingTeam) {
-      // This pair of employees already exists in the list --> only add the overlappying days
       existingTeam.daysWorked += overlappingDays;
     } else {
       this.accumulatedTeams.push({

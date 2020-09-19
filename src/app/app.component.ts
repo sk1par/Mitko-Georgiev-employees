@@ -10,10 +10,10 @@ import { Team } from './core/models';
 })
 export class AppComponent {
   title = 'assignment-team';
+  noFiles: boolean;
   fileName: string;
   teamProjectsToShow$: Observable<Team[]> = this.staffService.teamProjectsToShow;
   bestTeam$: Observable<Team> = this.staffService.bestTeam;
-  noFiles: boolean;
 
   constructor(
     private staffService: StaffService
