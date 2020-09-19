@@ -1,0 +1,41 @@
+<div class="container pt-4">
+  <div class="custom-file mb-4">
+    <input type="file" class="custom-file-input" id="textFile" accept=".txt" (change)="onFileChange($event)">
+    <label class="custom-file-label" for="textFile">{{ fileName ? fileName : 'Select your text file' }}</label>
+  </div>
+
+
+  <div class="table-responsive-lg table-dark" *ngIf="(teamProjectsToShow$ | async)?.length > 0 && !noFiles">
+    <table class="table table-bordered">
+      <thead>
+        <tr class="thead-dark">
+          <th>Employee ID #1</th>
+          <th>Employee ID #2</th>
+          <th>Project ID</th>
+          <th>Days worked</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pair of (teamProjectsToShow$ | async)">
+          <td>{{ pair.firstEmployeeId }}</td>
+          <td>{{ pair.secondEmployeeId }}</td>
+          <td>{{ pair.projectId }}</td>
+          <td>{{ pair.daysWorked }}</td>
+        </tr>
+        <tr>
+          <td class="text-center" colspan="3">The two employees (<strong>Employee {{ (bestTeam$ | async)?.firstEmployeeId }}</strong> and
+            <strong>Employee {{ (bestTeam$ | async)?.secondEmployeeId }})</strong>worked together for the longest time ----></td>
+          <td class="result">Total: <strong>{{ (bestTeam$ | async)?.daysWorked }}</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert-danger" role="alert" *ngIf="noFiles">
+    File is empty, please select other!
+  </div>
+
+  <div class="alert alert-warning" role="alert" *ngIf="!(bestTeam$ | async) && fileName">
+    There is no employees pair working together in exact time period !!!
+  </div>
+</div>
