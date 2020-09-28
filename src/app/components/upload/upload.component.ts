@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StaffService } from '../core/services/staff.service';
+import { StaffService } from '../../core/services/staff.service';
 
 @Component({
   selector: 'app-upload',

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Team } from '../core/models';
-import { StaffService } from '../core/services/staff.service';
+import { Team } from '../../core/models/team.interface';
+import { StaffService } from '../../core/services/staff.service';
 
 @Component({
   selector: 'app-table-result',
