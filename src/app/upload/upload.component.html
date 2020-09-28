@@ -1,0 +1,6 @@
+<div class="custom-file mb-4">
+    <input type="file" class="custom-file-input" id="textFile" accept=".txt" (change)="onFileChange($event)">
+    <label class="custom-file-label" for="textFile">{{ fileName ? fileName : 'Select your text file' }}</label>
+</div>
+
+<app-table-result [fileName]="fileName" [noFiles]="noFiles"></app-table-result>
